@@ -1,0 +1,16 @@
+set callingApp to (path to frontmost application as Unicode text)
+
+tell application "Firefox"
+	activate
+end tell
+
+tell application "System Events"
+	tell process "Firefox"
+		keystroke "r" using {command down}
+		delay 0.1
+	end tell
+end tell
+
+tell application callingApp
+	activate
+end tell
