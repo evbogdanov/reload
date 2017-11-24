@@ -1,2 +1,5 @@
 # reload
-Don't press Command-R ever again
+Usage:
+```
+$ reload /dir/to/watch [chrome|firefox|safari]
+```
