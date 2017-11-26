@@ -24,6 +24,13 @@ let BROWSER = null
 
 
 ////////////////////////////////////////////////////////////////////////////////
+/// Which files to watch?
+////////////////////////////////////////////////////////////////////////////////
+
+const INTERESTING_FILES = ['.html', '.css', '.js']
+
+
+////////////////////////////////////////////////////////////////////////////////
 /// Helpers
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -32,9 +39,20 @@ function exit(msg) {
   process.exit(1)
 }
 
-function watch(_, filename) {
-  // Ignore Emacs dirty files
+function isFileInteresting(filename) {
+  // Not interested in Emacs' crap
   if (filename.includes('#'))
+    return false
+
+  // Not interested in this kind of file
+  if (!INTERESTING_FILES.some(f => filename.endsWith(f)))
+    return false
+
+  return true
+}
+
+function watch(_, filename) {
+  if (!isFileInteresting(filename))
     return
 
   console.log(`File changed: '${filename}'`)
