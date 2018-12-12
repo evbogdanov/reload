@@ -18,7 +18,7 @@ const DIR = __dirname,
 
 const BROWSERS = ['chrome', 'firefox', 'safari']
 
-const DEFAULT_BROWSER = 'safari'
+const DEFAULT_BROWSER = BROWSERS[0];
 
 let BROWSER = null
 
